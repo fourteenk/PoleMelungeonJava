@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class imageLinear{
 	public static float dProd(float[] A, float[] X){
 		float d = 0;
-		for(int i = 0; i < 3; i = i + 1) d = d + (A[i] * X[i]);
+		for(int i = 0; i < 3; i++) d = d + (A[i] * X[i]);
 
 		return d;
 	}
@@ -23,7 +23,7 @@ public class imageLinear{
 		int i = 0;
 		while(scan.hasNext()){
 			A[i] = Float.parseFloat(scan.next());
-			i = i + 1;
+			i++;
 		}
 
 		return A;
@@ -33,11 +33,11 @@ public class imageLinear{
 		int i;
 		if(args.length != 10) usage(0);
 
-		for(i = 0; i < args[7].length(); i = i + 1) if(!Character.isDigit(args[7].charAt(i))) usage(2);
+		for(i = 0; i < args[7].length(); i++) if(!Character.isDigit(args[7].charAt(i))) usage(2);
 		int xres = Integer.parseInt(args[7]);
 		if(xres < 1) usage(2);
 
-		for(i = 0; i < args[9].length(); i = i + 1) if(!Character.isDigit(args[9].charAt(i))) usage(2);
+		for(i = 0; i < args[9].length(); i++) if(!Character.isDigit(args[9].charAt(i))) usage(2);
 		int yres = Integer.parseInt(args[9]);
 		if(yres < 1) usage(2);
 
@@ -86,12 +86,12 @@ public class imageLinear{
 		pgm.write("P2\n" + dims[0] + " " + dims[1] + "\n255\n");
 		float[] X = new float[3];
 		for(j = (dims[1] - 1); j >= 0; j = j - 1){
-			for(i = 0; i < dims[0]; i = i + 1){
+			for(i = 0; i < dims[0]; i++){
 				X[0] = (float)i;	X[1] = (float)j;	X[2] = 1;
 				d = dProd(A, X);
 				out.write(d + " ");
-				if(d < 0) d = 0;
-				else if(d > 255) d = 255;
+				if(d < 0) {d = 0;}
+				else if(d > 255) {d = 255;}
 
 				pgm.write((int)d + " ");
 			}
