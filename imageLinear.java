@@ -2,7 +2,7 @@
 	hw01 - 1/14/13
 	Usage: imageLinear infile [filename] outile [filename] outefilePgm [filename] xResolution [int] yResolution[int]
 	infile is a ".lin" file which consists of 3 decimal (float) numbers.
-	assigns each coordinate as the dot product of the coordinate (in homogeneous form) and the coefficients from *.lin file
+	assigns each pixel value as the dot product of the coordinate (in homogeneous form) and the coefficients from *.lin file
 */
 import java.io.*;
 import java.util.Scanner;
@@ -11,7 +11,6 @@ public class imageLinear{
 	public static float dProd(float[] A, float[] X){
 		float d = 0;
 		for(int i = 0; i < 3; i++) d = d + (A[i] * X[i]);
-
 		return d;
 	}
 
@@ -19,8 +18,8 @@ public class imageLinear{
 
 		Scanner scan = new Scanner(line);
 		float[] A = new float[3];
-
 		int i = 0;
+
 		while(scan.hasNext()){
 			A[i] = Float.parseFloat(scan.next());
 			i++;
